@@ -43,3 +43,4 @@ git config --global user.name "Jair durand"
    28  git push -u origin main
    29  historil
    30  history
+Si no funciona soy gey
