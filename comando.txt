@@ -1,0 +1,45 @@
+
+echo "# PIAD-302-DURAND" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/jair-angel777/PIAD-302-DURAND.git
+git push -u origin main
+
+git remote add origin https://github.com/jair-angel777/PIAD-302-DURAND.git
+git branch -M main
+git push -u origin main
+git config --global user.name "Jair durand"
+
+
+    1  composer global require laravel/installer
+    2  composer global require laravel/installer
+    3  laravel new example55
+    4  composer global require laravel/installer
+    5  laravel new et
+    6  laravel --version
+    7  pwd
+    8  git init
+    9  ls -la
+   10  git clone https://github.com/jair-angel777/PIAD-302-DURAND.git
+   11  ls -la
+   12  cd PIAD-302-DURAND/
+   13  PWD
+   14  ls -la
+   15  echo "# PIAD-302-DURAND" >> README.md
+   16  ls -la
+   17  cat README.md
+   18  echo "jair_angel_durand_ramirez" >> README.md
+   19  CAT README.md
+   20  git add .
+   21  git status
+   22  git commit -m "first commit"
+   23    git config --global user.email "1636763@senati.pe"
+   24   git config --global user.name "Jair durand"
+   25  git commit -m "first commit"
+   26  git estatus
+   27  git status
+   28  git push -u origin main
+   29  historil
+   30  history
