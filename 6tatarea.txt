@@ -32,6 +32,6 @@ go
 --ejerccio 2
 select e.firstname, COUNT(o.OrderID)
 from Orders o
-inner join Employees e on e.EmployeeID = e.EmployeeID
+inner join Employees e on o.EmployeeID = e.EmployeeID
 group by e.FirstName
 go
