@@ -1,0 +1,37 @@
+--unir todas las filas , id y nombre de ñas tablas productos y categorias
+SELECT ProductID, ProductNAME FROM Products
+UNION 
+SELECT CategoryID, Categoryname from Categories
+GO
+--consulta de uso de inner join
+select * from Products p
+inner join Categories c on p.CategoryID = c.CategoryID
+--consulta
+where ProductID = 1 and c.CategoryID = 1 ;
+GO
+--monstrar el productoid, productname , unitprice, categoryname
+
+select p.productID, p.productName, p.UnitPrice, c.CategoryName from Products p 
+INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+--ordens y costomers --> inner (3 columnas de cada tabla)
+--custmoers: customerID-CompanyName-contactName
+--orders: orderID-CustomerID-EmployeeID
+select * from Orders
+select * from Customers
+select o.OrderID, o.customerID, o.EmployeeID, c.customerID, c.CompanyName, c.ContactName 
+from Orders o inner join Customers c ON c.CustomerID = c.CustomerID
+GO
+ 
+--EJERCCIO 1
+
+SELECT c.companyName, SUM(od.UnitPrice * od.Quantity) from Orders o
+inner join [Order Details] od on o.OrderID = o.OrderID
+inner join Customers c on o.CustomerID = c.CustomerID
+group by c.CompanyName
+go
+--ejerccio 2
+select e.firstname, COUNT(o.OrderID)
+from Orders o
+inner join Employees e on e.EmployeeID = e.EmployeeID
+group by e.FirstName
+go

@@ -1,19 +1,27 @@
--- EJERCCIOS 
---1
-select*from Customers
-where Address like 'Av.%';
---2
-select*from Customers
-where Country != 'Brazil'
---3
-select*from Customers
-where Region is not null and Fax is not null;
---4
-select ShipCountry, count(*)from Orders
-GROUP BY ShipCountry
---5
-select ShipCity, count(*)from Orders
-GROUP BY ShipCity
---6
-SELECT CategoryID ,sum(UnitPrice) from Products
-group by CategoryID
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    public float horizontalMove;
+    public float verticalMove;
+    public CharacterController player;
+    public float playerSpeed;
+
+    void Start()
+    {
+        player = GetComponent<CharacterController>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        horizontalMove = Input.GetAxis("Horizontal");
+        verticalMove = Input.GetAxis("Vertical");
+    }
+    private void FixeUpdate()
+    {
+        player.Move(new Vector3(horizontalMove, 0, verticalMove) * playerSpeed * Time.deltaTime);
+    }
+}
