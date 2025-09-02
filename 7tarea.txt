@@ -1,0 +1,67 @@
+--crear un store procedure para sumar
+-- ejemplo: Como crear un procedimiento almacenado.
+
+create proc SumarNumeros
+(
+ @numero1 int,
+ @numero2 int
+)
+as
+  print '' + @numero1 + @numero2 + '';
+--ejemplo : ejecutar el procedimiento almacenado creado.
+exec SumarNumeros 100, 200;
+go
+-- Crear 4 procedimiento alamacenados: restar, multiplicar, dividir, potenciar.
+--resta:
+create proc RestarN2
+(
+ @numero1 int,
+ @numero2 int
+)
+as
+  print '' + @numero1 - @numero2 + '';
+go
+
+exec RestarN2 100, 150;
+go
+
+--multiplicar:
+create proc MULTIPLICARN1
+(
+ @numero1 int,
+ @numero2 int
+)
+as
+  print '' + @numero1 * @numero2 + '';
+go
+
+exec MULTIPLICARN1 -5, -1;
+go
+
+--dividir:
+create proc divicionN1
+(
+ @numero1 int,
+ @numero2 int
+)
+as
+  print '' + @numero1 / @numero2 + '';
+go
+
+exec divicionN1 10, 2;
+go
+
+--potencia:
+create proc potenciarN1
+(
+ @numero1 int,
+ @numero2 int
+)
+as
+BEGIN
+    SELECT POWER(@numero1, @numero2) AS Resultado;
+END
+GO
+
+exec potenciarN1 3, 2;
+go
