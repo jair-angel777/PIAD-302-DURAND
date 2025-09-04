@@ -1,0 +1,97 @@
+use TAREA3;
+create table UserLogs (
+  userLogId int primary key identity (1,1),
+  [action] varchar(100),
+  [user] varchar(100),
+  [date] datetime
+);
+
+select * from UserLogs
+select*from compradores;
+delete from compradores where dni = 23456781;
+
+create TRIGGER trigger_delete_Compradores ON Compradores
+after
+   delete
+as
+   insert into UserLogs([action],[user],[date])
+          values('delete',suser_name(), sysdatetime())
+drop trigger trigger_delete_Compradores
+go
+
+--crear un trigger para la tabla users cuando se actualise un registro
+
+Create trigger trigger_update_Compradores on Compradores
+after
+ Update
+as
+  insert into UserLogs([action],[user],[date])
+          values('Update',suser_name(), sysdatetime())
+
+drop trigger trigger_update_Compradores
+go
+--otro trigger para mas detalle
+
+create table UserLogss (
+  userLogId int primary key identity (1,1),
+  [action] varchar(100),
+  [user] varchar(100),
+  [date] datetime,
+  [detalle] varchar(200)
+);
+
+select*from UserLogss;
+select*from compradores
+UPDATE compradores
+    SET direccion = 'Av.alemania'
+	where dni = 23456789;
+
+CREATE TRIGGER trigger_update_Compradores
+ON Compradores
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO UserLogss([action], [user], [date], [detalle])
+    SELECT 
+        'Update' AS [action],
+        SUSER_NAME() AS [user],
+        SYSDATETIME() AS [date],
+        -- Aquí concatenamos los cambios para un detalle legible
+        'ID Comprador: ' + CAST(i.dni AS NVARCHAR(50)) + 
+        ', direccion anterior: ' + ISNULL(d.direccion, 'NULL') + 
+        ', nueva direccion: ' + ISNULL(i.direccion, 'NULL')
+    FROM inserted i
+    INNER JOIN deleted d ON i.dni = d.dni;
+END
+
+drop trigger trigger_update_Compradores
+
+go
+--trigger para delete y update
+
+CREATE TRIGGER trigger_UpdateoDelete_Compradores
+ON Compradores
+AFTER UPDATE, DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @accion NVARCHAR(10);
+
+    IF EXISTS (SELECT * FROM inserted)
+        SET @accion = 'Update';
+    ELSE
+        SET @accion = 'Delete';
+
+    INSERT INTO UserLogs([action], [user], [date])
+    VALUES (@accion, SUSER_NAME(), SYSDATETIME());
+END
+go
+select * from UserLogs
+select*from compradores;
+delete from compradores where dni = 23456789;
+UPDATE compradores
+    SET direccion = 'Av.alemania'
+	where dni = 34567891;
