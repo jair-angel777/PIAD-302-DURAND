@@ -1,0 +1,320 @@
+/*
+
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
+ */
+
+package javaapplication7;
+
+
+
+import javax.swing.JOptionPane;
+
+
+
+/**
+
+ *
+
+ * @author Alumno-ETI
+
+ */
+
+public class Ejeccio03_for {
+
+public static void main(String[] args) {   
+
+  
+
+  // numeros pares desde el 1 al 100
+
+  System.out.println("Numeros pares:");
+
+  for(int i= 2; i<101; i+=2) {
+
+    int multiplo = i/2;
+
+      System.out.println("2 x " + multiplo + " = " + i);
+
+  }
+
+   
+
+  // numeros inpares desde el 1 al 100
+
+  for(int i= 3; i<101; i+=3) {
+
+    int multiplo = i/3;
+
+      System.out.println("3 x " + multiplo + " = " + i);
+
+  }
+
+  // multiplos de 5 desde el 1 al 100
+
+  for(int i= 5; i<101; i+=5) {
+
+    int multiplo = i/5;
+
+      System.out.println("5 x " + multiplo + " = " + i);
+
+  }
+
+  // numero ingresar asta que muestre 1
+
+  String Texto = JOptionPane.showInputDialog("Introduce un numero x:");
+
+  int x= Integer.parseInt(Texto);
+
+  for(int i=x ; i > 0; i=i-1) {
+
+      System.out.println(i);
+
+      }
+
+   
+
+  // tabla de multiplicar
+
+  String Texto2 = JOptionPane.showInputDialog("Introduce un numero y:");
+
+  int y= Integer.parseInt(Texto2);
+
+   System.out.println("Tabla de multiplicar del " + y + " desde 1 hasta 100:");
+
+
+
+    for (int i = 1; i <= 12; i++) {
+
+      System.out.println(y + " x " + i + " = " + (y * i));
+
+    }
+
+   
+
+  String Texto3 = JOptionPane.showInputDialog("Introduce un numero d:");
+
+  int d= Integer.parseInt(Texto3);
+
+   
+
+  for (int i = 1; i <= d; i++) { 
+
+      System.out.println("Tabla del " + i + ":");
+
+      for (int j = 1; j <= 13; j++) { 
+
+        System.out.println(i + " x " + j + " = " + (i * j));
+
+      }
+
+      System.out.println();
+
+    }   
+
+  }
+
+}
+
+public class Ejercicio001 {
+
+  // pirmer hola mundo
+
+   
+
+  public static void main(String[] args) {
+
+    System.out.println("Hola mundo!");
+
+  // declara notas y promedio de notas
+
+  int not1 = 10, not2 = 18;
+
+  double promedio = (not1 + not2)*0.5;
+
+  System.out.println("El promedio de la nota es " + promedio);
+
+  // Ingreso de nombre
+
+  Scanner entrada = new Scanner( System.in);
+
+  System.out.println("Ingresa tu nombre: ");
+
+  String nombre = entrada.nextLine();
+
+  System.out.println("Ingresa tu apellido: ");
+
+  String apellido = entrada.nextLine();
+
+  System.out.println("El nombre ingresadi es: "+ nombre + " "+ apellido);    
+
+  }
+
+}
+
+public class Ejercicio02 {
+
+  public static void main(String[] args) {
+
+    System.out.println("Hola mundo!");
+
+  String nombre = JOptionPane.showInputDialog("Introduce tu nombre:");
+
+  JOptionPane.showMessageDialog(null, "Bienvenido: "+ nombre );
+
+    System.out.println("Bienvenido: "+ nombre);
+
+  String Texto = JOptionPane.showInputDialog("Introduce un numero a:");
+
+  double a= Double.parseDouble(Texto);
+
+   String Texto2 = JOptionPane.showInputDialog("Introduce un numero b:");
+
+   
+
+  double b = Double.parseDouble(Texto2);
+
+  double suma= a+b;
+
+    System.out.println("Resultado de la suma : "+ suma +" pe Mutante");
+
+  double resta= a-b;
+
+    System.out.println("Resultado de la resta : "+ resta +" pe Mutante");
+
+  double mult= a*b;
+
+    System.out.println("Resultado de la multiplicacion : "+ mult +" pe Mutante");
+
+  double div= a/b;
+
+    System.out.println("Resultado de la divicion : "+ div +" pe Mutante");
+
+  double residuo= a%b;
+
+    System.out.println("Resultado de la residuo : "+ residuo +" pe Mutante");
+
+   
+
+  JOptionPane.showMessageDialog(null, "Resultados: suma: "+ suma +", resta: "+ resta +", multiplicacion: "+ mult +", divicion: "+ div +", resicuo: "+ residuo);
+  
+
+  }
+
+}
+
+
+
+package javaapplication7;
+
+
+
+import javax.swing.JOptionPane;
+
+
+
+/**
+
+ *
+
+ * @author Alumno-ETI
+
+ */
+
+public class Ejeccio03_for {
+
+public static void main(String[] args) {   
+
+  
+
+  // numeros pares desde el 1 al 100
+
+  System.out.println("Numeros pares:");
+
+  for(int i= 2; i<101; i+=2) {
+
+    int multiplo = i/2;
+
+      System.out.println("2 x " + multiplo + " = " + i);
+
+  }
+
+   
+
+  // numeros inpares desde el 1 al 100
+
+  for(int i= 3; i<101; i+=3) {
+
+    int multiplo = i/3;
+
+      System.out.println("3 x " + multiplo + " = " + i);
+
+  }
+
+  // multiplos de 5 desde el 1 al 100
+
+  for(int i= 5; i<101; i+=5) {
+
+    int multiplo = i/5;
+
+      System.out.println("5 x " + multiplo + " = " + i);
+
+  }
+
+  // numero ingresar asta que muestre 1
+
+  String Texto = JOptionPane.showInputDialog("Introduce un numero x:");
+
+  int x= Integer.parseInt(Texto);
+
+  for(int i=x ; i > 0; i=i-1) {
+
+      System.out.println(i);
+
+      }
+
+   
+
+  // tabla de multiplicar
+
+  String Texto2 = JOptionPane.showInputDialog("Introduce un numero y:");
+
+  int y= Integer.parseInt(Texto2);
+
+   System.out.println("Tabla de multiplicar del " + y + " desde 1 hasta 100:");
+
+
+
+    for (int i = 1; i <= 12; i++) {
+
+      System.out.println(y + " x " + i + " = " + (y * i));
+
+    }
+
+   
+
+  String Texto3 = JOptionPane.showInputDialog("Introduce un numero d:");
+
+  int d= Integer.parseInt(Texto3);
+
+   
+
+  for (int i = 1; i <= d; i++) { 
+
+      System.out.println("Tabla del " + i + ":");
+
+      for (int j = 1; j <= 13; j++) { 
+
+        System.out.println(i + " x " + j + " = " + (i * j));
+
+      }
+
+      System.out.println();
+
+    }   
+
+  }
+
+}
