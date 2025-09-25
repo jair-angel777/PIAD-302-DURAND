@@ -1,0 +1,340 @@
+
+package crud.senatid;
+import java.sql.*;
+import java.util.*;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+
+public class NewJFrame extends javax.swing.JFrame {
+
+
+    public NewJFrame() {
+        initComponents();
+        conectar();
+        obtener_Registros();
+        Cargar_Registro();
+        agregarListenerATabla();
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_datos_region = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel222 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        btn_insertad = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
+        btn_ACTUALISAR = new javax.swing.JButton();
+        btn_copiar = new javax.swing.JButton();
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Region ID");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jButton3.setText("jButton3");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tabla_datos_region.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tabla_datos_region);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setText("FORMULARIO-REGIÓN");
+
+        jLabel222.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel222.setText("descricion de la Region");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Region ID");
+
+        btn_insertad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crud/senatid/inconos/Save--Streamline-Block-Free.png"))); // NOI18N
+        btn_insertad.setText("Insiertad");
+        btn_insertad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_insertadActionPerformed(evt);
+            }
+        });
+
+        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crud/senatid/inconos/Cut--Streamline-Block-Free.png"))); // NOI18N
+        btn_eliminar.setText("borrar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+
+        btn_ACTUALISAR.setText("Actualizar");
+        btn_ACTUALISAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ACTUALISARActionPerformed(evt);
+            }
+        });
+
+        btn_copiar.setText("copiar fila");
+        btn_copiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_copiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel222, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                            .addComponent(jTextField2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_insertad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_ACTUALISAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_copiar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel1)))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_insertad))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel222, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_eliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_ACTUALISAR)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(btn_copiar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        BorrarDatos();
+    }                                            
+
+    private void btn_insertadActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        insertoDatos();
+    }                                            
+
+    private void btn_ACTUALISARActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        ActualisarDatos();
+    }                                              
+
+    private void btn_copiarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        
+    }                                          
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new NewJFrame().setVisible(true);
+            }
+        });
+    }
+    
+    public Connection conectar(){
+        Connection cn = null;
+         try {
+         String jdbc_url = "jdbc:sqlserver://localhost:1433;encrypt=false;databaseName=Northwind";         
+         cn = DriverManager.getConnection(jdbc_url,"sa","1234");
+         
+         if(cn != null) {
+             System.out.println("conexion Exitosa");
+         }
+                 
+        } catch (SQLException ex) {    
+        }
+        return cn;
+    }
+    
+    public ResultSet obtener_Registros (){
+        String consulta_base_de_datos = "SELECT * FROM Region";
+        ResultSet resultados= null;
+        try {
+            Statement sentencia = conectar().createStatement();
+            resultados = sentencia.executeQuery(consulta_base_de_datos);
+        } catch (SQLException e){
+            System.out.println(e);
+        }
+        return resultados;
+    }
+    
+    public void Cargar_Registro(){
+        ResultSet resultados = obtener_Registros();
+        String[] columnNames = {"RegionID","RegionDescription"};
+        //model
+        DefaultTableModel model = new DefaultTableModel(null, columnNames);
+        tabla_datos_region.setModel(model);
+        try {
+            while (resultados.next()) {
+                String[] registro = {
+                    String.valueOf(resultados.getInt("RegionID")),
+                    resultados.getString("RegionDescription")
+                };
+                model.addRow(registro);
+            }
+        } catch (SQLException e) {
+            System.out.println("a");
+        }
+        tabla_datos_region.setModel(model);
+    }
+    
+    void insertoDatos(){
+    try (Connection con = conectar()) {
+    String sql = "INSERT INTO Region (RegionID, RegionDescription) VALUES(?, ?)";
+    PreparedStatement ps = con.prepareStatement(sql);
+    ps.setInt(1, Integer.parseInt(jTextField1.getText()));
+    ps.setString(2, jTextField2.getText());
+    ps.executeUpdate();
+    JOptionPane.showMessageDialog(this, "Registro insertado");
+    Cargar_Registro();
+   } catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Error al insertar: " + e.getMessage());
+   }
+  }
+    void BorrarDatos(){
+    try (Connection con = conectar()) {
+    String sql = "DELETE FROM Region WHERE RegionID = ?";
+    PreparedStatement ps = con.prepareStatement(sql);
+    ps.setString(1, jTextField1.getText());
+    ps.executeUpdate();
+    JOptionPane.showMessageDialog(this, "Registro Borrado");
+    jTextField1.setText("");
+    Cargar_Registro();
+   } catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Error al Borrar: " + e.getMessage());
+   }
+  }
+    void ActualisarDatos(){
+    try (Connection con = conectar()) {
+    String sql = "UPDATE Region set RegionDescription = ?  WHERE RegionID = ? ";
+    PreparedStatement ps = con.prepareStatement(sql);
+    ps.setInt(2, Integer.parseInt(jTextField1.getText()));
+    ps.setString(1, jTextField2.getText());
+    ps.executeUpdate();
+    JOptionPane.showMessageDialog(this, "Registro insertado");
+    Cargar_Registro();
+   } catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Error al insertar: " + e.getMessage());
+   }
+  }
+    public void agregarListenerATabla() {
+    tabla_datos_region.getSelectionModel().addListSelectionListener(event -> {
+        if (!event.getValueIsAdjusting()) {
+            int filaSeleccionada = tabla_datos_region.getSelectedRow();
+            if (filaSeleccionada != -1) {  
+                String RegionID = tabla_datos_region.getValueAt(filaSeleccionada, 0).toString();
+                String RegionDescription = tabla_datos_region.getValueAt(filaSeleccionada, 1).toString();
+
+                jTextField1.setText(RegionID);
+                jTextField2.setText(RegionDescription);
+            }
+        }
+    });
+    
+    
+  } 
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btn_ACTUALISAR;
+    private javax.swing.JButton btn_copiar;
+    private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_insertad;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel222;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tabla_datos_region;
+    // End of variables declaration                   
+}
