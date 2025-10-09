@@ -1,0 +1,13 @@
+Jonel05**
+
+["mexicocentral","northcentralus","westus3","canadacentral","brazilsouth"]
+
+admin_jair
+
+Jair12345
+
+hostname=recursosjair.mysql.database.azure.com
+port=3306
+username=admi_jair
+password={your-password}
+ssl-mode=require
